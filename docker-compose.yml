@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  network:
+    hostname: network
+    build:
+      context: ./Network
+      dockerfile: dockerfile
+    container_name: dockerNetwork
+    ports:
+      - 5000:5000
+    volumes:
+      - ./Network:/app
+    depends_on:
+      - web
+      - mysql
+    restart: always
+    environment:
+      - TZ=Asia/Taipei
+    networks:
+      - localnetwork
+  
+  web:
+    build:
+      context: ./Web
+      dockerfile: dockerfile
+    container_name: dockerWeb
+    ports:
+      - 3000:3000
+    volumes:
+      - ./Web:/web
+    depends_on:
+      - mysql
+    restart: always
+    environment:
+      - TZ=Asia/Taipei  
+    networks:
+      - localnetwork
+
+  mysql:
+    image: mysql
+    container_name: mysql-latest
+    ports:
+      - 3306:3306
+    volumes:
+      - ./MySql/custom:/etc/mysql/conf.d
+      - ./MySql/data:/var/lib/mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=sunny70487
+      - MYSQL_DATABASE=practice
+      - TZ=Asia/Taipei
+    networks:
+      - localnetwork
+
+networks:
+  localnetwork:
+    name: local-network

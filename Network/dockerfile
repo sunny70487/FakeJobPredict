@@ -1,0 +1,15 @@
+# 使用官方的 Python 執行環境作為基本的 Docker 影像
+FROM python:3.8.9
+
+# 設定工作目錄為 /app
+
+WORKDIR /app
+# 複製目前目錄下的內容，放進 Docker 容器中的 /app
+
+ADD . /app
+
+RUN pip3 install --no-cache-dir --upgrade -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["python3", "app.py"]
