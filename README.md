@@ -7,4 +7,4 @@ When pressing the button, it will predict a random test-data example by lightgbm
 * Require [Node.js](https://nodejs.org/en/) and [MySql image](https://hub.docker.com/_/mysql)
 
 ## Result
-![Success](Success.png | width=100)
+![Success](Success.png)
