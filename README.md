@@ -7,7 +7,7 @@ When pressing the button, it will predict a random test-data example by lightgbm
 * Require [Node.js](https://nodejs.org/en/) and [MySql image](https://hub.docker.com/_/mysql)
 
 ## How to use
-You just put code (docker-compose up -d) to your cmd under the repo!!
+You just put `docker-compose up -d` to your cmd under the repo!!
 
 ## Result
 ![Success](Success.png)
